@@ -14,7 +14,7 @@
 }
 .header {
   margin-top: 45px;
-  max-width: 880px;
+  /* max-width: 880px; */
 }
 
 .profile {
@@ -65,4 +65,47 @@
   width: 150px;
   height: 50px;
   margin-left: auto;
+}
+.cards {
+  color: black;
+  font-family: "inter";
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 30px;
+}
+.card__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 282px);
+  grid-gap: 17px 20px;
+  list-style: none;
+  justify-content: center;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+}
+.card__image {
+  width: 282px;
+  height: 282px;
+}
+.card__description {
+  background-color: white;
+  display: flex;
+  /* width: 100%; */
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  border-radius: 0px 0px 10px 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.card__title {
+  margin: 0;
+}
+.card__like-button {
+  background: transparent url(../images/like-button.svg) center no-repeat;
+  width: 21px;
+  height: 18px;
 }
