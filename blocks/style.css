@@ -1,6 +1,8 @@
 .page {
   background-color: black;
   color: white;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 .page__section {
   max-width: 880px;
@@ -64,6 +66,7 @@
   grid-area: button;
   border-color: white;
   align-items: center;
+  margin-left: 18px;
 }
 .profile__description {
   font-family: Inter;
@@ -115,7 +118,7 @@
 }
 .card__title {
   color: black;
-  font-family: "inter";
+  font-family: "Inter";
   font-size: 24px;
   font-weight: 900;
   line-height: 30px;
@@ -140,16 +143,66 @@
   padding-bottom: 60px;
   margin: 0;
 }
+@media screen and (max-width: 750px) {
+  .header {
+    max-width: 584px;
+  }
+  .profile {
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 584px;
+  }
+  .profile__info {
+    display: flex;
+    justify-content: center;
+    max-width: 350px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .profile__title {
+    font-size: 34px;
+  }
+  .profile__edit-button {
+    margin: 0;
+  }
+  .profile__add-button {
+    margin: 0;
+    max-width: 350px;
+    margin-top: 32px;
+  }
+}
+@media screen and (max-width: 620px) {
+  /* .header {
+    max-width: 282px;
+  }
+  .profile {
+    background-color: pink;
+    max-width: 282px;
+  } */
+}
 @media screen and (max-width: 480px) {
   .profile {
     background-color: green;
     flex-direction: column;
   }
   .profile__info {
-    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-items: center; */
     align-items: baseline;
+    justify-content: center;
+    max-width: 282px;
   }
   .profile__title {
     padding-bottom: 14px;
+    font-size: 22px;
+  }
+  .profile__add-button {
+    margin: 0;
+    max-width: 282px;
+    height: 50px;
+    margin-top: 20px;
   }
 }
