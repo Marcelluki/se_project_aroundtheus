@@ -1,8 +1,8 @@
 .page {
   background-color: black;
   color: white;
-  padding-right: 20px;
-  padding-left: 20px;
+  /* padding-right: 20px;
+  padding-left: 20px; */
 }
 .page__section {
   max-width: 880px;
@@ -31,6 +31,10 @@
   opacity: 0.699999988079071;
   background: #545454;
   margin: 0;
+}
+.content {
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .profile {
@@ -79,6 +83,9 @@
   line-height: 22px;
   font-weight: 400;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   grid-area: description;
 }
 .profile__add-button {
@@ -111,6 +118,7 @@
 }
 .card__description {
   background-color: white;
+
   display: flex;
   /* width: 100%; */
   padding-top: 25px;
@@ -155,6 +163,7 @@
   }
   .header__logo {
     padding-left: 27px;
+    padding-bottom: 32px;
   }
   .profile {
     /* background-color: blue; */
@@ -194,6 +203,7 @@
   .header__logo {
     width: 126px;
     height: 24px;
+    padding-bottom: 32px;
   }
   .header__line {
     /* min-width: 880px; */
@@ -201,10 +211,17 @@
   .profile {
     /* background-color: pink; */
     max-width: 282px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
   .profile__title {
     font-size: 22px;
     max-width: 215px;
+  }
+  .profile__description {
+    max-width: 254px;
+    font-size: 14px;
   }
   .profile__add-button {
     width: 100%;
@@ -231,6 +248,10 @@
     align-items: baseline;
     justify-content: center;
     max-width: 282px;
+  }
+  .profile__description {
+    max-width: 254px;
+    font-size: 14px;
   }
   .profile__title {
     /* padding-bottom: 14px; */
