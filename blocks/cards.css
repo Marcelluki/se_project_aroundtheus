@@ -1,6 +1,6 @@
 .cards {
 }
-.card__list {
+.cards__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
   gap: 20px 17px;
@@ -9,16 +9,16 @@
   list-style: none;
   justify-content: center;
 }
-.card__list-item {
+.cards__list-item {
   display: flex;
   flex-direction: column;
 }
-.card__image {
+.cards__image {
   width: 282px;
   height: 282px;
   border-radius: 10px 10px 0 0;
 }
-.card__description {
+.cards__description {
   background-color: white;
 
   display: flex;
@@ -32,7 +32,7 @@
   align-items: center;
   justify-content: space-between;
 }
-.card__title {
+.cards__title {
   color: black;
   font-family: "Inter";
   font-size: 24px;
@@ -40,14 +40,14 @@
   line-height: 30px;
   margin: 0;
 }
-.card__like-button {
+.cards__like-button {
   background: url(../images/like-button.svg) center no-repeat;
   width: 21px;
   height: 18px;
   border: none;
 }
 @media screen and (max-width: 620px) {
-  .card__list {
+  .cards__list {
     margin-top: 36px;
   }
 }
