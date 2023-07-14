@@ -1,7 +1,7 @@
 .footer {
   display: flex;
 }
-.footer__copyright {
+.footer {
   font-family: Inter;
   font-size: 18px;
   line-height: 22px;
@@ -17,9 +17,9 @@
 }
 @media screen and (max-width: 620px) {
   .footer {
-    max-width: 282px;
+    /* max-width: 282px; */
   }
-  .footer__copyright {
+  .footer {
     font-size: 14px;
     line-height: 1.2;
   }
@@ -27,9 +27,5 @@
 @media screen and (max-width: 480px) {
   .footer {
     max-width: 282px;
-  }
-  .footer__copyright {
-    font-size: 14px;
-    line-height: 1.2;
   }
 }
