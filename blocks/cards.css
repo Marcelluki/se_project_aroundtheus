@@ -52,6 +52,7 @@
 }
 .cards__like-button:hover {
   cursor: pointer;
+  opacity: 0.5;
 }
 @media screen and (max-width: 620px) {
   .cards__list {
