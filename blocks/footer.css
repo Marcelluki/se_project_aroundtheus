@@ -1,7 +1,4 @@
 .footer {
-  display: flex;
-}
-.footer {
   font-family: "Inter", Arial, sans-serif;
   font-size: 18px;
   line-height: 22px;
@@ -16,9 +13,6 @@
   }
 }
 @media screen and (max-width: 620px) {
-  .footer {
-    /* max-width: 282px; */
-  }
   .footer {
     font-size: 14px;
     line-height: 1.2;
