@@ -5,10 +5,19 @@
 - Intro
 - Figma
 - Images
+- Techniques
 
 **Intro**
 
 This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
+
+**Techniques**
+
+- max width to ensure design is reponsive at different screensizes.
+- Grid display
+- media quieries
+- responsive from 1280 - 320 screen sizes
+- focus on most popular sizes
 
 **Figma**
 
