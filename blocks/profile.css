@@ -37,6 +37,7 @@
   grid-area: button;
   border-color: white;
   border-style: solid;
+  border-width: 1px;
   align-items: center;
   margin-left: 18px;
 }
@@ -64,6 +65,7 @@
   border-color: white;
   border-style: solid;
   border-radius: 2px;
+  border-width: 2px;
   padding: 0;
 }
 .profile__add-button:hover {
@@ -72,8 +74,6 @@
 }
 @media screen and (max-width: 750px) {
   .profile {
-    /* background-color: blue; */
-    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     max-width: 584px;
