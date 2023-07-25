@@ -1,0 +1,45 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  /* display: flex; */
+  padding: 0 19px;
+  /* align-items: center;
+  justify-content: center; */
+  display: none;
+}
+.modal__opened {
+  display: flex;
+}
+.modal__container {
+  position: relative;
+  background-color: white;
+  padding: 36px;
+  border-radius: 10px;
+  margin: auto;
+}
+.modal__close {
+  position: absolute;
+  color: white;
+  cursor: pointer;
+  background-image: url(../images/close.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  background-color: transparent;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+  height: 40px;
+  width: 40px;
+}
+.modal__heading {
+  color: black;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+}
