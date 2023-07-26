@@ -8,8 +8,8 @@
   z-index: 999;
   display: flex;
   padding: 0 19px;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   /* display: none; */
 }
 .modal__opened {
@@ -77,4 +77,27 @@
   height: 50px;
   border: none;
   background-color: #000;
+}
+
+@media screen and (max-width: 620px) {
+  .modal__container {
+    max-width: 282px;
+    max-height: 322px;
+    padding: 25px 22px;
+  }
+  .modal__heading {
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 75px;
+  }
+  .modal__close {
+    right: 5px;
+    left: unset;
+    bottom: calc(100% + 14px);
+    width: 26px;
+    height: 26px;
+  }
+  .modal__button {
+    margin-top: 15px;
+  }
 }
