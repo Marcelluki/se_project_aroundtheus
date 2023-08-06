@@ -49,7 +49,7 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".cards__title");
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
-  cardTitleEl.alt = cardData.name;
+  cardImageEl.alt = cardData.name;
   return cardElement;
 }
 // EVENT HANDLERS
@@ -73,5 +73,4 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
-  // return cardElement;
 });
