@@ -24,10 +24,10 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-// Elements
+// Elements profile edit modal
 const profileEditButton = document.querySelector("#profile__edit-button");
 const profileEditModal = document.querySelector("#profile__edit-modal");
-const profileEditClose = document.querySelector("#profile__modal-close");
+const profileEditClose = profileEditModal.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -35,13 +35,20 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
+// Elements New Card Modal
+const addNewCardModal = document.querySelector("#card__add-modal");
+const addNewCardCloseButton = addNewCardModal.querySelector(".modal__close");
+// Card template and card list
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardListEl = document.querySelector(".cards__list");
+// Card add Button
+const addNewCardButton = document.querySelector("#profile__add-button");
 
 // FUNCTIONS
 function closePopup() {
   profileEditModal.classList.remove("modal__opened");
+  addNewCardModal.classList.remove("modal__opened");
 }
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -65,11 +72,16 @@ profileEditButton.addEventListener("click", () => {
   profileDescriptionInput.value = profileDescription.textContent;
   profileEditModal.classList.add("modal__opened");
 });
-
+// Close Button Listeners
 profileEditClose.addEventListener("click", closePopup);
+addNewCardCloseButton.addEventListener("click", closePopup);
 
+//
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
+addNewCardButton.addEventListener("click", () => {
+  addNewCardModal.classList.add("modal__opened");
+});
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
