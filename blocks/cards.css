@@ -18,6 +18,12 @@
   height: 282px;
   border-radius: 10px 10px 0 0;
 }
+.cards__delete-button {
+  background: url(../images/Trash.svg) center no-repeat;
+  width: 18px;
+  height: 19.3px;
+  position: absolute;
+}
 .cards__description {
   background-color: white;
 
