@@ -47,8 +47,11 @@ const addNewCardButton = document.querySelector("#profile__add-button");
 const addNewCardForm = addNewCardModal.querySelector("#add__card-form");
 const cardTitleInput = addNewCardForm.querySelector(".modal__input_type_title");
 const cardUrlInput = addNewCardForm.querySelector(".modal__input_type_url");
-
+// Delete Card Button
+const cardDeleteButton = document.querySelector(".cards__delete-button");
 // FUNCTIONS
+function removeCard() {}
+
 function openPopup(modal) {
   modal.classList.add("modal__opened");
 }
@@ -94,6 +97,9 @@ profileEditButton.addEventListener("click", () => {
   profileDescriptionInput.value = profileDescription.textContent;
   openPopup(profileEditModal);
 });
+// cardDeleteButton.addEventListener("click", () => {
+//   openPopup(profileEditModal);
+// });
 
 profileEditClose.addEventListener("click", () => {
   closePopup(profileEditModal);

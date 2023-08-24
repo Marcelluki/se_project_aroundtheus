@@ -10,6 +10,7 @@
   justify-content: center;
 }
 .cards__list-item {
+  position: relative;
   display: flex;
   flex-direction: column;
 }
@@ -20,9 +21,16 @@
 }
 .cards__delete-button {
   background: url(../images/Trash.svg) center no-repeat;
+  border: none;
   width: 18px;
   height: 19.3px;
   position: absolute;
+  right: 15px;
+  top: 18px;
+  padding: 0;
+}
+.cards__delete-button:hover {
+  cursor: pointer;
 }
 .cards__description {
   background-color: white;
