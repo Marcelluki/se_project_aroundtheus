@@ -47,8 +47,7 @@ const addNewCardButton = document.querySelector("#profile__add-button");
 const addNewCardForm = addNewCardModal.querySelector("#add__card-form");
 const cardTitleInput = addNewCardForm.querySelector(".modal__input_type_title");
 const cardUrlInput = addNewCardForm.querySelector(".modal__input_type_url");
-// Delete Card Button
-const cardDeleteButton = document.querySelector(".cards__delete-button");
+
 // FUNCTIONS
 function removeCard() {}
 
@@ -60,6 +59,10 @@ function closePopup(modal) {
 }
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
+  const cardDeleteButton = cardElement.querySelector(".cards__delete-button");
+  cardDeleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
   const cardImageEl = cardElement.querySelector(".cards__image");
   const cardTitleEl = cardElement.querySelector(".cards__title");
   cardTitleEl.textContent = cardData.name;
