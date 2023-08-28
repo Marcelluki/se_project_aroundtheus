@@ -29,8 +29,10 @@
   top: 18px;
   padding: 0;
 }
+
 .cards__delete-button:hover {
   cursor: pointer;
+  opacity: 0.6;
 }
 .cards__description {
   background-color: white;
@@ -64,9 +66,13 @@
   height: 18px;
   border: none;
 }
+
 .cards__like-button:hover {
   cursor: pointer;
   opacity: 0.5;
+}
+.cards__like-button_active {
+  background-image: url(../images/like-active.svg);
 }
 @media screen and (max-width: 620px) {
   .cards__list {

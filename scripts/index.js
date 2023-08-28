@@ -65,6 +65,10 @@ function getCardElement(cardData) {
   });
   const cardImageEl = cardElement.querySelector(".cards__image");
   const cardTitleEl = cardElement.querySelector(".cards__title");
+  const likeButton = cardElement.querySelector(".cards__like-button");
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("cards__like-button_active");
+  });
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
