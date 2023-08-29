@@ -113,6 +113,13 @@
     max-height: 322px;
     padding: 25px 22px;
   }
+  .modal__container_type_preview {
+    background-color: transparent;
+    max-width: 75vw;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+  }
   .modal__heading {
     margin-top: 0;
     font-size: 18px;
