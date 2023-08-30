@@ -53,6 +53,9 @@ const previewImageClose = previewImageModal.querySelector(".modal__close");
 const previewImageElement = previewImageModal.querySelector(
   ".modal__preview-image"
 );
+const previewImageText = previewImageModal.querySelector(
+  ".modal__preview-text"
+);
 // FUNCTIONS
 function removeCard() {}
 
@@ -73,6 +76,7 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".cards__image");
   cardImageEl.addEventListener("click", () => {
     previewImageElement.src = cardData.link;
+    previewImageText.textContent = cardData.name;
     openPopup(previewImageModal);
   });
   const cardTitleEl = cardElement.querySelector(".cards__title");
