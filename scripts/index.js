@@ -114,6 +114,7 @@ function handleAddCardFormSubmit(e) {
     cardListEl
   );
   closePopup(addNewCardModal);
+  addNewCardForm.reset();
 }
 // EVENT LISTENERS
 profileEditButton.addEventListener("click", () => {
