@@ -84,7 +84,12 @@
   display: flex;
   flex-direction: column;
 }
+.modal__wrapper {
+  position: relative;
+  width: 100%;
+}
 .modal__input {
+  width: 100%;
   font-family: "Inter", Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -98,6 +103,20 @@
   border-width: 1px;
   border-color: rgba(0, 0, 0, 0.2);
   outline: none;
+}
+.modal__input_type_error {
+  border-color: #ff0000;
+}
+.modal__error {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  /* opacity: 0; */
+  position: absolute;
+  top: 34px;
+  left: 0;
+  transition: opacity 0.3s ease;
 }
 .modal__button {
   font-family: "Inter", Arial, sans-serif;
