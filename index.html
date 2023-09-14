@@ -114,13 +114,18 @@
               id="profile-card-title-input-error"
             ></span>
           </div>
-          <input
-            type="text"
-            name="url"
-            class="modal__input modal__input_type_url"
-            id="profile-url-input"
-            placeholder="Image URL"
-          />
+          <div class="modal__wrapper">
+            <input
+              type="url"
+              name="image-url"
+              class="modal__input modal__input_type_url"
+              id="profile-url-input"
+              placeholder="Image URL"
+              required
+            />
+            <span class="modal__error" id="profile-url-input-error"></span>
+          </div>
+
           <button class="modal__button" id="modal-add-button" type="submit">
             Add
           </button>
