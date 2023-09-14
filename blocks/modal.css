@@ -107,6 +107,10 @@
 .modal__input_type_error {
   border-color: #ff0000;
 }
+.modal__button_disabled {
+  background-color: #000;
+  opacity: 0.8;
+}
 .modal__error {
   font-family: "Inter", Arial, sans-serif;
   font-size: 12px;
