@@ -109,7 +109,8 @@
 }
 .modal__button_disabled {
   background-color: #000;
-  opacity: 0.8;
+
+  opacity: 0.2;
 }
 .modal__error {
   font-family: "Inter", Arial, sans-serif;

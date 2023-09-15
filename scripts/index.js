@@ -53,6 +53,7 @@ const previewImageClose = previewImageModal.querySelector(".modal__close");
 const previewImageElement = previewImageModal.querySelector(
   ".modal__preview-image"
 );
+// MODAL
 const previewImageText = previewImageModal.querySelector(
   ".modal__preview-text"
 );
@@ -65,6 +66,7 @@ function openPopup(modal) {
 function closePopup(modal) {
   modal.classList.remove("modal__opened");
 }
+
 // Card TEMPLATE FUNCTIONS
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -145,4 +147,34 @@ addNewCardForm.addEventListener("submit", handleAddCardFormSubmit);
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
+});
+// CLOSE MODAL BY CLICK
+profileEditModal.addEventListener("click", (e) => {
+  if (e.target.matches(".modal")) {
+    closePopup(profileEditModal);
+  }
+});
+
+addNewCardModal.addEventListener("click", (e) => {
+  if (e.target.matches(".modal")) {
+    closePopup(addNewCardModal);
+  }
+});
+
+previewImageModal.addEventListener("click", (e) => {
+  if (e.target.matches(".modal")) {
+    closePopup(previewImageModal);
+  }
+});
+
+// CLOSE MODAL BY "ESC"
+document.addEventListener("keydown", (e) => {
+  const modals = [profileEditModal, addNewCardModal, previewImageModal];
+  if (e.key === "Escape") {
+    modals.forEach((modal) => closePopup(modal));
+
+    // closePopup(profileEditModal);
+    // closePopup(addNewCardModal);
+    // closePopup(previewImageModal);
+  }
 });
