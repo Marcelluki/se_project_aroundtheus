@@ -66,9 +66,9 @@ const previewImageElement = previewImageModal.querySelector(
 const previewImageText = previewImageModal.querySelector(
   ".modal__preview-text"
 );
-/*************
- * FUNCTIONS *
- *************/
+/***********************************************
+ * REMOVE CARD, OPEN AND CLOSE MODAL FUNCTIONS *
+ ***********************************************/
 function removeCard() {}
 
 function openPopup(modal) {
@@ -117,9 +117,9 @@ function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 }
-/******************
- * EVENT HANDLERS *
- ******************/
+/*******************************************************
+ * EVENT HANDLERS FOR SUMBITTING PROFILE AND CARD DATA *
+ *******************************************************/
 function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
