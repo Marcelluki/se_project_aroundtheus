@@ -67,16 +67,27 @@ const previewImageText = previewImageModal.querySelector(
   ".modal__preview-text"
 );
 /***********************************************
- * REMOVE CARD, OPEN AND CLOSE MODAL FUNCTIONS *
+ * REMOVE CARD, OPEN AND CLOSE MODAL FUNCTIONS
+ * ?Includes "Esc" key logic *
  ***********************************************/
-function removeCard() {}
 
 function openPopup(modal) {
-  modal.classList.add("modal__opened");
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeByEscape);
 }
 function closePopup(modal) {
-  modal.classList.remove("modal__opened");
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeByEscape);
 }
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".modal_opened");
+    if (openedPopup) {
+      openedPopup.classList.remove("modal_opened");
+    }
+  }
+}
+
 /**********
  * ARRAYS *
  **********/
@@ -148,9 +159,6 @@ profileEditButton.addEventListener("click", () => {
   profileDescriptionInput.value = profileDescription.textContent;
   openPopup(profileEditModal);
 });
-// cardDeleteButton.addEventListener("click", () => {
-//   openPopup(profileEditModal);
-// });
 
 profileEditClose.addEventListener("click", () => {
   closePopup(profileEditModal);
@@ -182,36 +190,4 @@ modals.forEach((modal) => {
       closePopup(modal);
     }
   });
-});
-
-// profileEditModal.addEventListener("mousedown", (e) => {
-//   if (e.target.matches(".modal")) {
-//     closePopup(profileEditModal);
-//   }
-// });
-
-// addNewCardModal.addEventListener("mousedown", (e) => {
-//   if (e.target.matches(".modal")) {
-//     closePopup(addNewCardModal);
-//   }
-// });
-
-// previewImageModal.addEventListener("mousedown", (e) => {
-//   if (e.target.matches(".modal")) {
-//     closePopup(previewImageModal);
-//   }
-// });
-
-/************************
- * CLOSE MODAL BY "ESC" *
- ************************/
-document.addEventListener("keydown", (e) => {
-  // const modals = [profileEditModal, addNewCardModal, previewImageModal];
-  if (e.key === "Escape") {
-    modals.forEach((modal) => closePopup(modal));
-
-    // closePopup(profileEditModal);
-    // closePopup(addNewCardModal);
-    // closePopup(previewImageModal);
-  }
 });

@@ -14,7 +14,7 @@
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;
   /* display: none; */
 }
-.modal__opened {
+.modal_opened {
   /* display: flex; */
   visibility: visible;
   pointer-events: all;
