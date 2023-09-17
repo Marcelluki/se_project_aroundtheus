@@ -83,7 +83,7 @@ function closeByEscape(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".modal_opened");
     if (openedPopup) {
-      openedPopup.classList.remove("modal_opened");
+      closePopup(openedPopup);
     }
   }
 }
@@ -176,8 +176,8 @@ addNewCardButton.addEventListener("click", () => {
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addNewCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
+initialCards.forEach((renderCard) => {
+  const cardElement = getCardElement(renderCard);
   cardListEl.prepend(cardElement);
 });
 /************************
