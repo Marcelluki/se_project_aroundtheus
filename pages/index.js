@@ -1,4 +1,4 @@
-// import Card from "./Card.js";
+import Card from "../components/Card.js";
 
 const initialCards = [
   {
@@ -26,6 +26,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
 /*******************************
  * Elements profile edit modal *
  *******************************/
@@ -97,12 +98,13 @@ const modals = [profileEditModal, addNewCardModal, previewImageModal];
 /***************************
  * Card TEMPLATE FUNCTIONS *
  ***************************/
+// ! Card Class
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
-  const cardDeleteButton = cardElement.querySelector(".cards__delete-button");
-  cardDeleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  // const cardDeleteButton = cardElement.querySelector(".cards__delete-button");
+  // cardDeleteButton.addEventListener("click", () => {
+  //   cardElement.remove();
+  // });
   /**********************
    * Card Preview Popup *
    **********************/
@@ -113,23 +115,24 @@ function getCardElement(cardData) {
     previewImageElement.alt = cardData.name;
     openPopup(previewImageModal);
   });
-  const cardTitleEl = cardElement.querySelector(".cards__title");
+  // const cardTitleEl = cardElement.querySelector(".cards__title");
   /****************************************
    * Like Button Listener for Like ACTIVE *
    ****************************************/
-  const likeButton = cardElement.querySelector(".cards__like-button");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("cards__like-button_active");
-  });
-  cardTitleEl.textContent = cardData.name;
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  return cardElement;
+  // const likeButton = cardElement.querySelector(".cards__like-button");
+  // likeButton.addEventListener("click", () => {
+  //   likeButton.classList.toggle("cards__like-button_active");
+  // });
+  // cardTitleEl.textContent = cardData.name;
+  // cardImageEl.src = cardData.link;
+  // cardImageEl.alt = cardData.name;
+  // return cardElement;
 }
-function renderCard(cardData) {
-  const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
-}
+// function renderCard(cardData) {
+//   const cardElement = getCardElement(cardData);
+//   cardListEl.prepend(cardElement);
+// }
+// !Card Class
 /*******************************************************
  * EVENT HANDLERS FOR SUMBITTING PROFILE AND CARD DATA *
  *******************************************************/
@@ -178,10 +181,30 @@ addNewCardButton.addEventListener("click", () => {
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addNewCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-initialCards.forEach((renderCard) => {
-  const cardElement = getCardElement(renderCard);
-  cardListEl.prepend(cardElement);
+// initialCards.forEach((renderCard) => {
+//   const cardElement = getCardElement(renderCard);
+//   cardListEl.prepend(cardElement);
+// });
+
+initialCards.forEach((cardData) => {
+  const card = new Card(cardData, "#card-template");
+  const cardNode = card.getView();
+
+  cardListEl.prepend(cardNode);
 });
+
+// const cardData = {
+//   name: "Yosemite Valley",
+//   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+// };
+
+// const card = new Card(cardData, "#card-template");
+// const cardNode = card.getView();
+/**
+ * card node should be used to go through the loop, say for each, and create cards. Then we add via the prepend this cards on the screen
+ *
+ */
+
 /************************
  * CLOSE MODAL BY CLICK *
  ************************/
