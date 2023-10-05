@@ -187,7 +187,9 @@ addNewCardForm.addEventListener("submit", handleAddCardFormSubmit);
 // });
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template");
+  const card = new Card(cardData, "#card-template", () => {
+    openPopup(previewImageModal);
+  });
   const cardNode = card.getView();
 
   cardListEl.prepend(cardNode);
