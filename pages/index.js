@@ -108,13 +108,13 @@ function getCardElement(cardData) {
   /**********************
    * Card Preview Popup *
    **********************/
-  // const cardImageEl = cardElement.querySelector(".cards__image");
-  // cardImageEl.addEventListener("click", () => {
-  //   previewImageElement.src = cardData.link;
-  //   previewImageText.textContent = cardData.name;
-  //   previewImageElement.alt = cardData.name;
-  //   openPopup(previewImageModal);
-  // });
+  const cardImageEl = cardElement.querySelector(".cards__image");
+  cardImageEl.addEventListener("click", () => {
+    previewImageElement.src = cardData.link;
+    previewImageText.textContent = cardData.name;
+    previewImageElement.alt = cardData.name;
+    openPopup(previewImageModal);
+  });
   // const cardTitleEl = cardElement.querySelector(".cards__title");
   /****************************************
    * Like Button Listener for Like ACTIVE *
