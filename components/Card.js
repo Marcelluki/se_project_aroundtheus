@@ -22,7 +22,7 @@ export default class Card {
     this._cardElement
       .querySelector(".cards__image")
       .addEventListener("click", () => {
-        this._handleImageClick();
+        this._handleImageClick(this._name, this._link);
       });
   }
   _handleDeleteCard() {

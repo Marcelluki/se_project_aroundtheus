@@ -108,13 +108,13 @@ function getCardElement(cardData) {
   /**********************
    * Card Preview Popup *
    **********************/
-  const cardImageEl = cardElement.querySelector(".cards__image");
-  cardImageEl.addEventListener("click", () => {
-    previewImageElement.src = cardData.link;
-    previewImageText.textContent = cardData.name;
-    previewImageElement.alt = cardData.name;
-    openPopup(previewImageModal);
-  });
+  // const cardImageEl = cardElement.querySelector(".cards__image");
+  // cardImageEl.addEventListener("click", () => {
+  //   previewImageElement.src = cardData.link;
+  //   previewImageText.textContent = cardData.name;
+  //   previewImageElement.alt = cardData.name;
+  //   openPopup(previewImageModal);
+  // });
   // const cardTitleEl = cardElement.querySelector(".cards__title");
   /****************************************
    * Like Button Listener for Like ACTIVE *
@@ -187,7 +187,11 @@ addNewCardForm.addEventListener("submit", handleAddCardFormSubmit);
 // });
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template", () => {
+  const card = new Card(cardData, "#card-template", (name, link) => {
+    previewImageElement.src = link;
+    previewImageElement.alt = name;
+    previewImageText.textContent = name;
+
     openPopup(previewImageModal);
   });
   const cardNode = card.getView();
