@@ -1,4 +1,5 @@
 import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -128,10 +129,19 @@ function getCardElement(cardData) {
   // cardImageEl.alt = cardData.name;
   // return cardElement;
 }
-// function renderCard(cardData) {
-//   const cardElement = getCardElement(cardData);
-//   cardListEl.prepend(cardElement);
-// }
+function renderCard(cardData) {
+  const cardElement = new Card(cardData, "#card-template", (name, link) => {
+    previewImageElement.src = link;
+    previewImageElement.alt = name;
+    previewImageText.textContent = name;
+
+    openPopup(previewImageModal);
+  });
+  const cardNode = cardElement.getView();
+
+  cardListEl.prepend(cardNode);
+  console.log(cardData, cardElement, cardListEl);
+}
 // !Card Class
 /*******************************************************
  * EVENT HANDLERS FOR SUMBITTING PROFILE AND CARD DATA *
@@ -198,18 +208,24 @@ initialCards.forEach((cardData) => {
 
   cardListEl.prepend(cardNode);
 });
+/**************
+ * Validation *
+ **************/
+const editFormElement = profileEditModal.querySelector(".modal__form");
+const addFormElement = addNewCardModal.querySelector(".modal__form");
 
-// const cardData = {
-//   name: "Yosemite Valley",
-//   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-// };
-
-// const card = new Card(cardData, "#card-template");
-// const cardNode = card.getView();
-/**
- * card node should be used to go through the loop, say for each, and create cards. Then we add via the prepend this cards on the screen
- *
- */
+const validationSettings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+const editFormValidator = new FormValidator(
+  validationSettings,
+  editFormElement
+);
+const addFormValidator = new FormValidator(validationSettings, addFormElement);
 
 /************************
  * CLOSE MODAL BY CLICK *
