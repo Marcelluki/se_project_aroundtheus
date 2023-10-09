@@ -140,7 +140,6 @@ function renderCard(cardData) {
   const cardNode = cardElement.getView();
 
   cardListEl.prepend(cardNode);
-  console.log(cardData, cardElement, cardListEl);
 }
 // !Card Class
 /*******************************************************
@@ -226,7 +225,8 @@ const editFormValidator = new FormValidator(
   editFormElement
 );
 const addFormValidator = new FormValidator(validationSettings, addFormElement);
-
+addFormValidator.enableValidation();
+editFormValidator.enableValidation();
 /************************
  * CLOSE MODAL BY CLICK *
  ************************/
