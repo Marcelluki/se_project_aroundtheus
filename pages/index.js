@@ -129,6 +129,7 @@ function getCardElement(cardData) {
   // cardImageEl.alt = cardData.name;
   // return cardElement;
 }
+
 function renderCard(cardData) {
   const cardElement = new Card(cardData, "#card-template", (name, link) => {
     previewImageElement.src = link;
@@ -210,9 +211,6 @@ initialCards.forEach((cardData) => {
 /**************
  * Validation *
  **************/
-const editFormElement = profileEditModal.querySelector(".modal__form");
-const addFormElement = addNewCardModal.querySelector(".modal__form");
-
 const validationSettings = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
@@ -222,9 +220,9 @@ const validationSettings = {
 };
 const editFormValidator = new FormValidator(
   validationSettings,
-  editFormElement
+  profileEditForm
 );
-const addFormValidator = new FormValidator(validationSettings, addFormElement);
+const addFormValidator = new FormValidator(validationSettings, addNewCardForm);
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 /************************
