@@ -96,39 +96,7 @@ function closeByEscape(evt) {
  * ARRAYS *
  **********/
 const modals = [profileEditModal, addNewCardModal, previewImageModal];
-/***************************
- * Card TEMPLATE FUNCTIONS *
- ***************************/
-// ! Card Class
-// function getCardElement(cardData) {
-//   const cardElement = cardTemplate.cloneNode(true);
-//   // const cardDeleteButton = cardElement.querySelector(".cards__delete-button");
-//   // cardDeleteButton.addEventListener("click", () => {
-//   //   cardElement.remove();
-//   // });
-//   /**********************
-//    * Card Preview Popup *
-//    **********************/
-//   const cardImageEl = cardElement.querySelector(".cards__image");
-//   cardImageEl.addEventListener("click", () => {
-//     previewImageElement.src = cardData.link;
-//     previewImageText.textContent = cardData.name;
-//     previewImageElement.alt = cardData.name;
-//     openPopup(previewImageModal);
-//   });
-//   // const cardTitleEl = cardElement.querySelector(".cards__title");
-//   /****************************************
-//    * Like Button Listener for Like ACTIVE *
-//    ****************************************/
-//   // const likeButton = cardElement.querySelector(".cards__like-button");
-//   // likeButton.addEventListener("click", () => {
-//   //   likeButton.classList.toggle("cards__like-button_active");
-//   // });
-//   // cardTitleEl.textContent = cardData.name;
-//   // cardImageEl.src = cardData.link;
-//   // cardImageEl.alt = cardData.name;
-//   // return cardElement;
-// }
+
 function createCard(cardData) {
   const cardElement = new Card(cardData, "#card-template", (name, link) => {
     previewImageElement.src = link;
@@ -193,11 +161,6 @@ addNewCardButton.addEventListener("click", () => {
 });
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addNewCardForm.addEventListener("submit", handleAddCardFormSubmit);
-
-// initialCards.forEach((renderCard) => {
-//   const cardElement = getCardElement(renderCard);
-//   cardListEl.prepend(cardElement);
-// });
 
 initialCards.forEach((cardData) => {
   const cardNode = createCard(cardData);
