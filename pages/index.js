@@ -1,5 +1,7 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 
 const initialCards = [
   {
@@ -156,9 +158,9 @@ previewImageClose.addEventListener("click", () => {
   closePopup(previewImageModal);
 });
 
-addNewCardButton.addEventListener("click", () => {
-  openPopup(addNewCardModal);
-});
+// addNewCardButton.addEventListener("click", () => {
+//   openPopup(addNewCardModal);
+// });
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addNewCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
@@ -176,13 +178,26 @@ const validationSettings = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
+// edit form validator
+
 const editFormValidator = new FormValidator(
   validationSettings,
   profileEditForm
 );
+// add form Validator
+
 const addFormValidator = new FormValidator(validationSettings, addNewCardForm);
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
+//  new card popup form
+
+const newCardPopup = new PopupWithForm(
+  "#add__card-form",
+  handleAddCardFormSubmit
+);
+
+const userInfo = new UserInfo(".profile__title", ".profile__description");
+console.log(userInfo.getUserInfo());
 /************************
  * CLOSE MODAL BY CLICK *
  ************************/
