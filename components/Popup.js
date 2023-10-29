@@ -4,10 +4,10 @@ export default class Popup {
   }
 
   open() {
-    this_popupElement.classList.add("modal_opened");
+    this._popupElement.classList.add("modal_opened");
   }
   close() {
-    this_popupElement.classList.remove("modal_opened");
+    this._popupElement.classList.remove("modal_opened");
   }
 
   _handleEscClose(evt) {
@@ -17,9 +17,9 @@ export default class Popup {
   }
 
   setEventListeners() {
-    const closeBtn = document.querySelector(".modal__close");
+    const closeBtn = this._popupElement.querySelector(".modal__close");
     closeBtn.addEventListener("click", () => {
-      this._close();
+      this.close();
     });
   }
 }
