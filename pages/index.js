@@ -221,8 +221,10 @@ profileEditButton.addEventListener("click", () => {
   profileEditPopup.open();
 });
 
+/******************
+ * POPUPWITHIMAGE *
+ ******************/
 const newImagePopup = new PopupWithImage("#preview__image-modal");
-newImagePopup.open();
 /*************
  * USER INFO *
  *************/
@@ -237,10 +239,10 @@ const cardSection = new Section(
  * CLOSE MODAL BY CLICK *
  ************************/
 
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", (e) => {
-    if (e.target.matches(".modal")) {
-      closePopup(modal);
-    }
-  });
-});
+// modals.forEach((modal) => {
+//   modal.addEventListener("mousedown", (e) => {
+//     if (e.target.matches(".modal")) {
+//       closePopup(modal);
+//     }
+//   });
+// });
