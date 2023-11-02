@@ -25,7 +25,7 @@ export default class Popup {
     document.addEventListener("keydown", this._handleEscClose);
 
     this._popupElement.addEventListener("click", (evt) => {
-      if (evt.target.classList.contains("modal__opened")) {
+      if (evt.target.classList.contains("modal_opened")) {
         this.close();
       }
     });
