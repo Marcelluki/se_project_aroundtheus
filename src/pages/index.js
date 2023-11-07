@@ -40,27 +40,6 @@ const previewImageElement = previewImageModal.querySelector(
 const previewImageText = previewImageModal.querySelector(
   ".modal__preview-text"
 );
-/***********************************************
- * REMOVE CARD, OPEN AND CLOSE MODAL FUNCTIONS
- * ?Includes "Esc" key logic *
- ***********************************************/
-
-// function openPopup(modal) {
-//   modal.classList.add("modal_opened");
-//   document.addEventListener("keydown", closeByEscape);
-// }
-// function closePopup(modal) {
-//   modal.classList.remove("modal_opened");
-//   document.removeEventListener("keydown", closeByEscape);
-// }
-// function closeByEscape(evt) {
-//   if (evt.key === "Escape") {
-//     const openedPopup = document.querySelector(".modal_opened");
-//     if (openedPopup) {
-//       closePopup(openedPopup);
-//     }
-//   }
-// }
 
 /**********
  * ARRAYS *
@@ -102,30 +81,6 @@ function handleAddCardFormSubmit(e) {
   addNewCardForm.reset();
   addFormValidator.toggleButtonState();
 }
-/*******************
- * EVENT LISTENERS *
- *******************/
-// profileEditButton.addEventListener("click", () => {
-//   profileTitleInput.value = profileTitle.textContent;
-//   profileDescriptionInput.value = profileDescription.textContent;
-//   openPopup(profileEditModal);
-// });
-
-// profileEditClose.addEventListener("click", () => {
-//   closePopup(profileEditModal);
-// });
-// addNewCardCloseButton.addEventListener("click", () => {
-//   closePopup(addNewCardModal);
-// });
-// previewImageClose.addEventListener("click", () => {
-//   closePopup(previewImageModal);
-// });
-
-// addNewCardButton.addEventListener("click", () => {
-//   openPopup(addNewCardModal);
-// });
-// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-// addNewCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
 initialCards.forEach((cardData) => {
   const cardNode = createCard(cardData);
