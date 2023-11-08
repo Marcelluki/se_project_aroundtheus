@@ -22,6 +22,8 @@ import {
   addNewCardModal,
   previewImageModal,
   validationSettings,
+  newName,
+  newJob,
 } from "../utils/constants.js";
 
 const profileEditClose = profileEditModal.querySelector(".modal__close");
@@ -55,37 +57,28 @@ function createCard(cardData) {
 function renderCard(cardData) {
   const cardNode = createCard(cardData);
 
-  cardListEl.prepend(cardNode);
+  cardSection.addItem(cardNode);
 }
 /*******************************************************
  * EVENT HANDLERS FOR SUMBITTING PROFILE AND CARD DATA *
  *******************************************************/
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+function handleProfileEditSubmit(formData) {
+  userInfo.setUserInfo(name, job);
+
+  profileTitleInput.value = formData.name;
+  profileDescriptionInput.value = formData.job;
   profileEditPopup.close();
 }
-function handleAddCardFormSubmit(e) {
-  e.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  renderCard(
-    {
-      name,
-      link,
-    },
-    cardListEl
-  );
+function handleAddCardFormSubmit(formData) {
+  const { name, imageUrl } = formData;
+  renderCard({
+    name,
+    link: imageUrl,
+  });
   newCardPopup.close();
   addNewCardForm.reset();
   addFormValidator.toggleButtonState();
 }
-
-initialCards.forEach((cardData) => {
-  const cardNode = createCard(cardData);
-  cardListEl.prepend(cardNode);
-});
 
 /***********************
  * EDIT FORM VALIDATOR *
@@ -144,6 +137,6 @@ const userInfo = new UserInfo(".profile__title", ".profile__description");
 
 const cardSection = new Section(
   { items: initialCards, renderer: renderCard },
-  ".cards__list-item"
+  ".cards__list"
 );
 cardSection.renderItems();
