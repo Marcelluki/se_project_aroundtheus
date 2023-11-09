@@ -62,10 +62,8 @@ function renderCard(cardData) {
 /*******************************************************
  * EVENT HANDLERS FOR SUMBITTING PROFILE AND CARD DATA *
  *******************************************************/
-function handleProfileEditSubmit() {
-  const newName = profileTitleInput.value;
-  const newJob = profileDescriptionInput.value;
-  userInfo.setUserInfo(newName, newJob);
+function handleProfileEditSubmit(formData) {
+  userInfo.setUserInfo(formData.name, formData.job);
   profileEditPopup.close();
 }
 function handleAddCardFormSubmit(formData) {
