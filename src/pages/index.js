@@ -50,6 +50,7 @@ const modals = [profileEditModal, addNewCardModal, previewImageModal];
 
 function createCard(cardData) {
   const cardElement = new Card(cardData, "#card-template", (name, link) => {
+    debugger;
     newImagePopup.open(name, link);
   });
   return cardElement.getView();
@@ -67,9 +68,9 @@ function handleProfileEditSubmit(formData) {
   profileEditPopup.close();
 }
 function handleAddCardFormSubmit(formData) {
-  const { name, imageUrl } = formData;
+  const { title, imageUrl } = formData;
   renderCard({
-    name,
+    name: title,
     link: imageUrl,
   });
   newCardPopup.close();
