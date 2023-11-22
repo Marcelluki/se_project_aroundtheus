@@ -138,3 +138,13 @@ const cardSection = new Section(
   ".cards__list"
 );
 cardSection.renderItems();
+
+fetch("https://jsonplaceholder.typicode.com/users", {
+  headers: {
+    authorization: "e9b30f62-f32d-45b6-96ae-c516b6b7d5cd",
+  },
+})
+  .then((res) => res.json())
+  .then((result) => {
+    console.log(result);
+  });
