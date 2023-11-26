@@ -1,27 +1,40 @@
-// class Api {
-//   constructor(options) {
-//     // constructor body
-//   }
+export default class Api {
+  constructor(options) {
+    this._options = options;
+  }
 
-//   getInitialCards() {
-//     return fetch("https://around-api.en.tripleten-services.com/v1", {
-//       headers: {
-//         authorization: "e9b30f62-f32d-45b6-96ae-c516b6b7d5cd",
-//       },
-//     }).then((res) => {
-//       if (res.ok) {
-//         return res.json();
-//       }
-//     });
-//   }
+  getInitialCards() {
+    return fetch(`${this._options.baseUrl}/cards`, {
+      headers: {
+        authorization: this._options.headers.authorization,
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // if the server returns an error, reject the promise
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
 
-//   // other methods for working with the API
-// }
-
-// const api = new Api({
-//   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-//   headers: {
-//     authorization: "e9b30f62-f32d-45b6-96ae-c516b6b7d5cd",
-//     "Content-Type": "application/json",
-//   },
-// });
+  createCard({ name, link }) {
+    return fetch(`${this._options.baseUrl}/cards`, {
+      method: "POST",
+      headers: {
+        authorization: this._options.headers.authorization,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        link,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // if the server returns an error, reject the promise
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+  // other methods for working with the API
+}

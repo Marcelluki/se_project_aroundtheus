@@ -5,6 +5,7 @@ import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import "./index.css";
+import Api from "../components/Api.js";
 import {
   initialCards,
   profileEditButton,
@@ -139,12 +140,16 @@ const cardSection = new Section(
 );
 cardSection.renderItems();
 
-fetch("https://jsonplaceholder.typicode.com/users", {
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
     authorization: "e9b30f62-f32d-45b6-96ae-c516b6b7d5cd",
+    "Content-Type": "application/json",
   },
-})
-  .then((res) => res.json())
-  .then((result) => {
-    console.log(result);
-  });
+});
+api.getInitialCards();
+// use the function below when you create the card via the modal
+// api.createCard({
+//   name: "hello",
+//   link: "https://images6.alphacoders.com/133/1331137.png",
+// });
