@@ -27,6 +27,20 @@ import {
   newJob,
 } from "../utils/constants.js";
 
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "e9b30f62-f32d-45b6-96ae-c516b6b7d5cd",
+    "Content-Type": "application/json",
+  },
+});
+api.getInitialCards().then();
+// use the function below when you create the card via the modal
+// api.createCard({
+//   name: "hello",
+//   link: "https://images6.alphacoders.com/133/1331137.png",
+// });
+
 const profileEditClose = profileEditModal.querySelector(".modal__close");
 const addNewCardCloseButton = addNewCardModal.querySelector(".modal__close");
 const cardTemplate =
@@ -138,18 +152,7 @@ const cardSection = new Section(
   { items: initialCards, renderer: renderCard },
   ".cards__list"
 );
-cardSection.renderItems();
 
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "e9b30f62-f32d-45b6-96ae-c516b6b7d5cd",
-    "Content-Type": "application/json",
-  },
+api.getInitialCards().then((cards) => {
+  cardSection.renderItems(cards);
 });
-api.getInitialCards();
-// use the function below when you create the card via the modal
-// api.createCard({
-//   name: "hello",
-//   link: "https://images6.alphacoders.com/133/1331137.png",
-// });
