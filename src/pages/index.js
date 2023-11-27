@@ -84,6 +84,10 @@ function handleProfileEditSubmit(formData) {
 }
 function handleAddCardFormSubmit(formData) {
   const { title, imageUrl } = formData;
+  api.createCard({
+    name: title,
+    link: imageUrl,
+  });
   renderCard({
     name: title,
     link: imageUrl,
