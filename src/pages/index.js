@@ -155,10 +155,17 @@ const userInfo = new UserInfo(".profile__title", ".profile__description");
 // declare, but don't assign a value
 let cardSection;
 
-api.getInitialCards().then((cards) => {
-  cardSection = new Section(
-    { items: cards, renderer: renderCard },
-    ".cards__list"
-  );
-  cardSection.renderItems();
-});
+api
+  .getInitialCards()
+  .then((cards) => {
+    cardSection = new Section(
+      { items: cards, renderer: renderCard },
+      ".cards__list"
+    );
+
+    cardSection.renderItems();
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+api.getUserInfo();

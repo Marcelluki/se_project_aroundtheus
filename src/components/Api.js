@@ -17,6 +17,17 @@ export default class Api {
     });
   }
 
+  getUserInfo() {
+    return fetch(`${this._options.baseUrl}/users/me`, {
+      headers: {
+        authorization: this._options.headers.authorization,
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
   createCard({ name, link }) {
     return fetch(`${this._options.baseUrl}/cards`, {
       method: "POST",
@@ -35,6 +46,5 @@ export default class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-
-  // other methods for working with the API
 }
+// other methods for working with the API
