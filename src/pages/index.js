@@ -34,34 +34,34 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-api.getInitialCards().then();
+// api.getInitialCards().then();
 // use the function below when you create the card via the modal
 // api.createCard({
 //   name: "hello",
 //   link: "https://images6.alphacoders.com/133/1331137.png",
 // });
 
-const profileEditClose = profileEditModal.querySelector(".modal__close");
-const addNewCardCloseButton = addNewCardModal.querySelector(".modal__close");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+// const profileEditClose = profileEditModal.querySelector(".modal__close");
+// const addNewCardCloseButton = addNewCardModal.querySelector(".modal__close");
+// const cardTemplate =
+//   document.querySelector("#card-template").content.firstElementChild;
 
 /***********************
  * PREVIEW IMAGE MODAL *
  ***********************/
 
-const previewImageClose = previewImageModal.querySelector(".modal__close");
-const previewImageElement = previewImageModal.querySelector(
-  ".modal__preview-image"
-);
-const previewImageText = previewImageModal.querySelector(
-  ".modal__preview-text"
-);
+// const previewImageClose = previewImageModal.querySelector(".modal__close");
+// const previewImageElement = previewImageModal.querySelector(
+//   ".modal__preview-image"
+// );
+// const previewImageText = previewImageModal.querySelector(
+//   ".modal__preview-text"
+// );
 
 /**********
  * ARRAYS *
  **********/
-const modals = [profileEditModal, addNewCardModal, previewImageModal];
+// const modals = [profileEditModal, addNewCardModal, previewImageModal];
 
 function createCard(cardData) {
   const cardElement = new Card(cardData, "#card-template", (name, link) => {
@@ -148,11 +148,13 @@ newImagePopup.setEventListeners();
  *************/
 const userInfo = new UserInfo(".profile__title", ".profile__description");
 
-const cardSection = new Section(
-  { items: initialCards, renderer: renderCard },
-  ".cards__list"
-);
+// declare, but don't assign a value
+let cardSection;
 
 api.getInitialCards().then((cards) => {
-  cardSection.renderItems(cards);
+  cardSection = new Section(
+    { items: cards, renderer: renderCard },
+    ".cards__list"
+  );
+  cardSection.renderItems();
 });
