@@ -26,6 +26,7 @@ import {
   newName,
   newJob,
   profileAvatar,
+  profileAvatarInput,
 } from "../utils/constants.js";
 
 const api = new Api({
@@ -145,9 +146,16 @@ profileEditButton.addEventListener("click", () => {
 /*********************
  * AVATAR EDIT POPUP *
  *********************/
-const avatarEditPopup = new PopupWithForm("#avatar__change-modal");
+const avatarEditPopup = new PopupWithForm("#avatar__change-modal", () => {
+  api.setUserAvatar(profileAvatarInput.value).then((res) => {
+    profileAvatar.src = res.avatar;
+  });
+});
 avatarEditPopup.setEventListeners();
 
+/******************************
+ * AVATAR EDIT EVENT LISTENER *
+ ******************************/
 profileAvatar.addEventListener("click", () => {
   avatarEditPopup.open();
 });
@@ -167,11 +175,8 @@ const userInfo = new UserInfo(
   ".profile__image"
 );
 
-api.getUserInfo().then((userInfo) => {
-  userInfo.setUserInfo({
-    name: userInfo.name,
-    job: userInfo.about,
-  });
+api.getUserInfo().then((user) => {
+  userInfo.setUserInfo(user.name, user.about);
 });
 
 // declare, but don't assign a value
@@ -190,9 +195,7 @@ api
   .catch((err) => {
     console.error(err);
   });
-api.setUserAvatar((res) => {
-  console.log(res);
-});
+
 api.updateUserInfo((res) => {
   console.log(res);
 });

@@ -34,6 +34,10 @@ export default class Api {
       headers: {
         authorization: this._options.headers.authorization,
       },
+      body: JSON.stringify({
+        name: name,
+        about: job,
+      }),
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -66,6 +70,9 @@ export default class Api {
         authorization: this._options.headers.authorization,
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        avatar: link,
+      }),
     }).then((res) => {
       if (res.ok) {
         return res.json();

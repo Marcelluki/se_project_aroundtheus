@@ -38,6 +38,7 @@ export const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 export const profileAvatar = document.querySelector(".profile__image");
+export const profileAvatarInput = document.querySelector("#avata-url-input");
 export const newName = profileTitleInput.value;
 export const newJob = profileDescriptionInput.value;
 export const profileEditForm = profileEditModal.querySelector(".modal__form");
@@ -48,6 +49,7 @@ export const addNewCardForm = addNewCardModal.querySelector("#add__card-form");
 export const cardTitleInput = addNewCardForm.querySelector(
   ".modal__input_type_title"
 );
+
 export const cardUrlInput = addNewCardForm.querySelector(
   ".modal__input_type_url"
 );
