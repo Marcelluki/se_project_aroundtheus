@@ -37,6 +37,7 @@ export const profileTitleInput = document.querySelector("#profile-title-input");
 export const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
+export const profileAvatar = document.querySelector(".profile__image");
 export const newName = profileTitleInput.value;
 export const newJob = profileDescriptionInput.value;
 export const profileEditForm = profileEditModal.querySelector(".modal__form");

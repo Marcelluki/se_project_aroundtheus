@@ -28,6 +28,18 @@ export default class Api {
       }
     });
   }
+  updateUserInfo({ name, job }) {
+    return fetch(`${this._options.baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._options.headers.authorization,
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
   createCard({ name, link }) {
     return fetch(`${this._options.baseUrl}/cards`, {
       method: "POST",
@@ -39,6 +51,21 @@ export default class Api {
         name,
         link,
       }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+
+  setUserAvatar() {
+    return fetch(`${this._options.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._options.headers.authorization,
+        "Content-Type": "application/json",
+      },
     }).then((res) => {
       if (res.ok) {
         return res.json();

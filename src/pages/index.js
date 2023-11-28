@@ -25,6 +25,7 @@ import {
   validationSettings,
   newName,
   newJob,
+  profileAvatar,
 } from "../utils/constants.js";
 
 const api = new Api({
@@ -141,6 +142,16 @@ profileEditButton.addEventListener("click", () => {
   profileEditPopup.open();
 });
 
+/*********************
+ * AVATAR EDIT POPUP *
+ *********************/
+const avatarEditPopup = new PopupWithForm("#avatar__change-modal");
+avatarEditPopup.setEventListeners();
+
+profileAvatar.addEventListener("click", () => {
+  avatarEditPopup.open();
+});
+
 /******************
  * POPUPWITHIMAGE *
  ******************/
@@ -150,7 +161,11 @@ newImagePopup.setEventListeners();
 /*************
  * USER INFO *
  *************/
-const userInfo = new UserInfo(".profile__title", ".profile__description");
+const userInfo = new UserInfo(
+  ".profile__title",
+  ".profile__description",
+  ".profile__image"
+);
 
 api.getUserInfo().then((userInfo) => {
   userInfo.setUserInfo({
@@ -175,3 +190,9 @@ api
   .catch((err) => {
     console.error(err);
   });
+api.setUserAvatar((res) => {
+  console.log(res);
+});
+api.updateUserInfo((res) => {
+  console.log(res);
+});
