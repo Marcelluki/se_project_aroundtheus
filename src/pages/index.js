@@ -152,6 +152,13 @@ newImagePopup.setEventListeners();
  *************/
 const userInfo = new UserInfo(".profile__title", ".profile__description");
 
+api.getUserInfo().then((userInfo) => {
+  userInfo.setUserInfo({
+    name: userInfo.name,
+    job: userInfo.about,
+  });
+});
+
 // declare, but don't assign a value
 let cardSection;
 
@@ -159,7 +166,7 @@ api
   .getInitialCards()
   .then((cards) => {
     cardSection = new Section(
-      { items: cards, renderer: renderCard },
+      { items: cards.reverse(), renderer: renderCard },
       ".cards__list"
     );
 
@@ -168,4 +175,3 @@ api
   .catch((err) => {
     console.error(err);
   });
-api.getUserInfo();
