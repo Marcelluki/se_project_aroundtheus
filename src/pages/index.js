@@ -66,10 +66,17 @@ const api = new Api({
 // const modals = [profileEditModal, addNewCardModal, previewImageModal];
 
 function createCard(cardData) {
-  const cardElement = new Card(cardData, "#card-template", (name, link) => {
-    debugger;
-    newImagePopup.open(name, link);
-  });
+  const cardElement = new Card(
+    cardData,
+    "#card-template",
+    (name, link) => {
+      newImagePopup.open(name, link);
+    },
+    ({ id, isLiked }) => {
+      isLiked ? api.dislikeCard(id) : api.likeCard(id);
+      // api.dislikeCard();
+    }
+  );
   return cardElement.getView();
 }
 function renderCard(cardData) {
@@ -81,19 +88,21 @@ function renderCard(cardData) {
  * EVENT HANDLERS FOR SUMBITTING PROFILE AND CARD DATA *
  *******************************************************/
 function handleProfileEditSubmit(formData) {
-  userInfo.setUserInfo(formData.name, formData.job);
-  profileEditPopup.close();
+  api.updateUserInfo(formData).then((res) => {
+    userInfo.setUserInfo(formData.name, formData.job);
+    profileEditPopup.close();
+  });
 }
 function handleAddCardFormSubmit(formData) {
   const { title, imageUrl } = formData;
-  api.createCard({
-    name: title,
-    link: imageUrl,
-  });
-  renderCard({
-    name: title,
-    link: imageUrl,
-  });
+  api
+    .createCard({
+      name: title,
+      link: imageUrl,
+    })
+    .then((card) => {
+      renderCard(card);
+    });
   newCardPopup.close();
   addNewCardForm.reset();
   addFormValidator.toggleButtonState();
@@ -146,11 +155,13 @@ profileEditButton.addEventListener("click", () => {
 /*********************
  * AVATAR EDIT POPUP *
  *********************/
-const avatarEditPopup = new PopupWithForm("#avatar__change-modal", () => {
-  api.setUserAvatar(profileAvatarInput.value).then((res) => {
-    profileAvatar.src = res.avatar;
+const avatarEditPopup = new PopupWithForm("#avatar__edit-modal", (formData) => {
+  api.setUserAvatar(formData.avatar).then((res) => {
+    userInfo.setAvatar(res.avatar);
+    avatarEditPopup.close();
   });
 });
+
 avatarEditPopup.setEventListeners();
 
 /******************************
@@ -177,6 +188,7 @@ const userInfo = new UserInfo(
 
 api.getUserInfo().then((user) => {
   userInfo.setUserInfo(user.name, user.about);
+  userInfo.setAvatar(user.avatar);
 });
 
 // declare, but don't assign a value
@@ -195,7 +207,3 @@ api
   .catch((err) => {
     console.error(err);
   });
-
-api.updateUserInfo((res) => {
-  console.log(res);
-});

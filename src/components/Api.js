@@ -33,6 +33,7 @@ export default class Api {
       method: "PATCH",
       headers: {
         authorization: this._options.headers.authorization,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: name,
@@ -63,7 +64,7 @@ export default class Api {
     });
   }
 
-  setUserAvatar() {
+  setUserAvatar(link) {
     return fetch(`${this._options.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
@@ -73,6 +74,34 @@ export default class Api {
       body: JSON.stringify({
         avatar: link,
       }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+  likeCard(cardId) {
+    return fetch(`${this._options.baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: {
+        authorization: this._options.headers.authorization,
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+  dislikeCard(cardId) {
+    return fetch(`${this._options.baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: {
+        authorization: this._options.headers.authorization,
+        "Content-Type": "application/json",
+      },
     }).then((res) => {
       if (res.ok) {
         return res.json();
