@@ -7,20 +7,24 @@ export default class Card {
   ) {
     this._name = name;
     this._link = link;
-    this._id = _id;
-    this._isLiked = isLiked;
+    this.id = _id;
+    this.isLiked = isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleLikeClick = handleLikeClick;
+    this._cardElement = document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".cards__list-item")
+      .cloneNode(true);
+    this.setLikeButtonState();
 
-    console.log(_id);
   }
   _setEventListeners() {
     // LIKE BUTTON
     this._cardElement
       .querySelector(".cards__like-button")
       .addEventListener("click", () => {
-        this._handleLikeIcon();
+        this._handleLikeClick(this);
       });
     // DELETE BUTTON
     this._cardElement
@@ -36,8 +40,28 @@ export default class Card {
       });
   }
 
+  setLikeButtonState() {
+    if (this.isLiked) {
+      this.likeCard();
+    } else {
+      this.disLikeCard();
+    }
+  }
+
   _handleDeleteCard() {
     this._cardElement.remove();
+  }
+
+  likeCard() {
+    this._cardElement
+      .querySelector(".cards__like-button")
+      .classList.add("cards__like-button_active");
+  }
+
+  disLikeCard() {
+    this._cardElement
+      .querySelector(".cards__like-button")
+      .classList.remove("cards__like-button_active");
   }
 
   _handleLikeIcon() {
@@ -48,22 +72,22 @@ export default class Card {
   }
 
   getView() {
-    const node = (this._cardElement = document
-      .querySelector(this._cardSelector)
-      .content.querySelector(".cards__list-item")
-      .cloneNode(true));
+    // this._cardElement = document
+    //   .querySelector(this._cardSelector)
+    //   .content.querySelector(".cards__list-item")
+    //   .cloneNode(true);
 
-    const cardImageEl = node.querySelector(".cards__image");
+    const cardImageEl = this._cardElement.querySelector(".cards__image");
     cardImageEl.src = this._link;
     cardImageEl.alt = this._name;
 
-    const cardTitleEl = node.querySelector(".cards__title");
+    const cardTitleEl = this._cardElement.querySelector(".cards__title");
     cardTitleEl.textContent = this._name;
 
     // by default you need to check the isLiked field and set like button to the active/passive state based on isLiked
 
     this._setEventListeners();
 
-    return node;
+    return this._cardElement;
   }
 }

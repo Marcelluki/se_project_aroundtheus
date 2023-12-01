@@ -72,8 +72,26 @@ function createCard(cardData) {
     (name, link) => {
       newImagePopup.open(name, link);
     },
-    ({ id, isLiked }) => {
-      isLiked ? api.dislikeCard(id) : api.likeCard(id);
+    (card) => {
+      //isLiked ? api.dislikeCard(id) : api.likeCard(id);
+      if (card.isLiked) {
+        return api
+          .dislikeCard(card.id)
+          .then((res) => {
+            card.disLikeCard();
+            card.isLiked = !card.isLiked;
+          })
+          .catch((err) => {
+            console.error(`${err}. Cannot dislike like button`);
+            //messageModal.setMessage(`${err}. Cannot dislike like button`)
+            //messageModal.open();
+          });
+      } else {
+        return api.likeCard(card.id).then((res) => {
+          card.likeCard();
+          card.isLiked = !card.isLiked;
+        });
+      }
       // api.dislikeCard();
     }
   );
