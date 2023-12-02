@@ -109,5 +109,20 @@ export default class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
+  deleteCard(cardId) {
+    return fetch(`${this._options.baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: this._options.headers.authorization,
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
 }
+
 // other methods for working with the API

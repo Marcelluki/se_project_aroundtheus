@@ -1,6 +1,7 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -92,8 +93,8 @@ function createCard(cardData) {
           card.isLiked = !card.isLiked;
         });
       }
-      // api.dislikeCard();
-    }
+    },
+    handleDeleteClick
   );
   return cardElement.getView();
 }
@@ -133,10 +134,28 @@ const editFormValidator = new FormValidator(
   validationSettings,
   profileEditForm
 );
+
+/*********************
+ * DELETE CARD POPUP *
+ *********************/
+const cardDeletePopup = new PopupWithConfirmation("#delete__card-modal");
+cardDeletePopup.setEventListeners();
+
+function handleDeleteClick(card) {
+  cardDeletePopup.setSubmitAction(() => {
+    return api.deleteCard(card.id).then((res) => {
+      card.deleteCard();
+    });
+  });
+  cardDeletePopup.open();
+}
+
+// function handleConfirmFormSubmit() {
+//   //api.deleteCard(cardid).then.apply.
+// }
 /**********************
  * ADD FORM VALIDATOR *
  **********************/
-
 const addFormValidator = new FormValidator(validationSettings, addNewCardForm);
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
