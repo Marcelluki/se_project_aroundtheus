@@ -139,7 +139,7 @@ const editFormValidator = new FormValidator(
  * DELETE CARD POPUP *
  *********************/
 const cardDeletePopup = new PopupWithConfirmation("#delete__card-modal");
-cardDeletePopup.setEventListeners();
+// cardDeletePopup.setEventListeners();
 
 function handleDeleteClick(card) {
   cardDeletePopup.setSubmitAction(() => {
