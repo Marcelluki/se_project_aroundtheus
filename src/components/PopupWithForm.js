@@ -32,7 +32,7 @@ export default class PopupWithForm extends Popup {
   }
   setLoading(isLoading) {
     if (isLoading) {
-      this._popupButton.textContent = "loading...";
+      this._popupButton.textContent = "Saving...";
     } else {
       this._popupButton.textContent = this._popupButtonText;
     }
