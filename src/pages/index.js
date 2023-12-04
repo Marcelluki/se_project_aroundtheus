@@ -107,12 +107,14 @@ function renderCard(cardData) {
  * EVENT HANDLERS FOR SUMBITTING PROFILE AND CARD DATA *
  *******************************************************/
 function handleProfileEditSubmit(formData) {
+  profileEditPopup.setLoading(true);
   api.updateUserInfo(formData).then((res) => {
     userInfo.setUserInfo(formData.name, formData.job);
     profileEditPopup.close();
   });
 }
 function handleAddCardFormSubmit(formData) {
+  newCardPopup.setLoading(true);
   const { title, imageUrl } = formData;
   api
     .createCard({
@@ -143,6 +145,7 @@ const cardDeletePopup = new PopupWithConfirmation("#delete__card-modal");
 
 function handleDeleteClick(card) {
   cardDeletePopup.setSubmitAction(() => {
+    cardDeletePopup.setLoading(true);
     return api.deleteCard(card.id).then((res) => {
       card.deleteCard();
     });
@@ -193,6 +196,7 @@ profileEditButton.addEventListener("click", () => {
  * AVATAR EDIT POPUP *
  *********************/
 const avatarEditPopup = new PopupWithForm("#avatar__edit-modal", (formData) => {
+  avatarEditPopup.setLoading(true);
   api.setUserAvatar(formData.avatar).then((res) => {
     userInfo.setAvatar(res.avatar);
     avatarEditPopup.close();

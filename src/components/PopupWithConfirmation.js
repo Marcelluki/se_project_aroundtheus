@@ -4,6 +4,7 @@ export default class PopupWithConfirmation extends Popup {
   constructor(popupSelector) {
     super({ popupSelector });
     this.popupForm = this._popupElement.querySelector(".modal__form");
+    this._popupButton = this._popupElement.querySelector(".modal__button");
     this.setEventListeners();
   }
 
@@ -19,6 +20,12 @@ export default class PopupWithConfirmation extends Popup {
         this.close();
       });
     });
-    // listen for submit on this.popupForm
+  }
+  setLoading(isLoading) {
+    if (isLoading) {
+      this._popupButton.textContent = "loading...";
+    } else {
+      this._popupButton.textContent = this._popupButtonText;
+    }
   }
 }
