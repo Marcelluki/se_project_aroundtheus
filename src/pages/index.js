@@ -28,6 +28,7 @@ import {
   newJob,
   profileAvatar,
   profileAvatarInput,
+  profileAvatarForm,
 } from "../utils/constants.js";
 
 const api = new Api({
@@ -162,6 +163,7 @@ function handleDeleteClick(card) {
 const addFormValidator = new FormValidator(validationSettings, addNewCardForm);
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
+
 /***********************
  * NEW CARD FORM POPUP *
  ***********************/
@@ -192,6 +194,11 @@ profileEditButton.addEventListener("click", () => {
   profileEditPopup.open();
 });
 
+// const avatarFormValidator = new FormValidator(
+//   validationSettings,
+//   profileAvatarForm
+// );
+// avatarFormValidator.enableValidation();
 /*********************
  * AVATAR EDIT POPUP *
  *********************/
@@ -204,7 +211,6 @@ const avatarEditPopup = new PopupWithForm("#avatar__edit-modal", (formData) => {
 });
 
 avatarEditPopup.setEventListeners();
-
 /******************************
  * AVATAR EDIT EVENT LISTENER *
  ******************************/
