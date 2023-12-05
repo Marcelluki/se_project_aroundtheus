@@ -11,12 +11,22 @@
   border-radius: 50%;
   margin-right: 24px;
 }
-.profile__image-container {
-  position: relative;
-}
-.profile__image-container:hover {
+.profile__image:hover {
   opacity: 0.2;
 }
+.profile__image-container {
+  position: relative;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  margin-right: 24px;
+}
+
+.profile__image-container:hover .profile__image__edit-button {
+  opacity: 1;
+  cursor: pointer;
+}
+
 .profile__image__edit-button {
   background: transparent url(../images/profile-pen.svg) center no-repeat;
   background-size: contain;
@@ -30,10 +40,7 @@
   position: absolute;
   opacity: 0;
 }
-.profile__image-container:hover .profile__image__edit-button {
-  opacity: 1;
-  cursor: pointer;
-}
+
 .profile__info {
   display: grid;
   grid-template-areas: "title button" "description description";
