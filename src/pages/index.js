@@ -38,34 +38,6 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-// api.getInitialCards().then();
-// use the function below when you create the card via the modal
-// api.createCard({
-//   name: "hello",
-//   link: "https://images6.alphacoders.com/133/1331137.png",
-// });
-
-// const profileEditClose = profileEditModal.querySelector(".modal__close");
-// const addNewCardCloseButton = addNewCardModal.querySelector(".modal__close");
-// const cardTemplate =
-//   document.querySelector("#card-template").content.firstElementChild;
-
-/***********************
- * PREVIEW IMAGE MODAL *
- ***********************/
-
-// const previewImageClose = previewImageModal.querySelector(".modal__close");
-// const previewImageElement = previewImageModal.querySelector(
-//   ".modal__preview-image"
-// );
-// const previewImageText = previewImageModal.querySelector(
-//   ".modal__preview-text"
-// );
-
-/**********
- * ARRAYS *
- **********/
-// const modals = [profileEditModal, addNewCardModal, previewImageModal];
 
 function createCard(cardData) {
   const cardElement = new Card(
@@ -75,7 +47,6 @@ function createCard(cardData) {
       newImagePopup.open(name, link);
     },
     (card) => {
-      //isLiked ? api.dislikeCard(id) : api.likeCard(id);
       if (card.isLiked) {
         return api
           .dislikeCard(card.id)
@@ -85,8 +56,6 @@ function createCard(cardData) {
           })
           .catch((err) => {
             console.error(`${err}. Cannot dislike like button`);
-            //messageModal.setMessage(`${err}. Cannot dislike like button`)
-            //messageModal.open();
           });
       } else {
         return api.likeCard(card.id).then((res) => {
