@@ -194,11 +194,11 @@ profileEditButton.addEventListener("click", () => {
   profileEditPopup.open();
 });
 
-// const avatarFormValidator = new FormValidator(
-//   validationSettings,
-//   profileAvatarForm
-// );
-// avatarFormValidator.enableValidation();
+const avatarFormValidator = new FormValidator(
+  validationSettings,
+  profileAvatarForm
+);
+avatarFormValidator.enableValidation();
 /*********************
  * AVATAR EDIT POPUP *
  *********************/

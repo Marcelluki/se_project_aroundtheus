@@ -40,7 +40,7 @@ export const profileDescriptionInput = document.querySelector(
 export const profileAvatar = document.querySelector(
   ".profile__image-container"
 );
-export const profileAvatarForm = document.querySelector(".edit__avatar-form");
+export const profileAvatarForm = document.querySelector("#edit__avatar-form");
 export const profileAvatarInput = document.querySelector("#avatar-url-input");
 export const newName = profileTitleInput.value;
 export const newJob = profileDescriptionInput.value;
