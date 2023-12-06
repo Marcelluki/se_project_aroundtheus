@@ -80,7 +80,7 @@ function handleProfileEditSubmit(formData) {
   profileEditPopup.setLoading(true);
   api
     .updateUserInfo(formData)
-    .then((res) => {
+    .then(() => {
       userInfo.setUserInfo(formData.name, formData.job);
       profileEditPopup.close();
     })
