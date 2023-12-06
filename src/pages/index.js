@@ -78,10 +78,18 @@ function renderCard(cardData) {
  *******************************************************/
 function handleProfileEditSubmit(formData) {
   profileEditPopup.setLoading(true);
-  api.updateUserInfo(formData).then((res) => {
-    userInfo.setUserInfo(formData.name, formData.job);
-    profileEditPopup.close();
-  });
+  api
+    .updateUserInfo(formData)
+    .then((res) => {
+      userInfo.setUserInfo(formData.name, formData.job);
+      profileEditPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally((res) => {
+      profileEditPopup.setLoading(false);
+    });
 }
 function handleAddCardFormSubmit(formData) {
   newCardPopup.setLoading(true);
@@ -93,9 +101,15 @@ function handleAddCardFormSubmit(formData) {
     })
     .then((card) => {
       renderCard(card);
+      newCardPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      newCardPopup.setLoading(false);
     });
-  newCardPopup.close();
-  addNewCardForm.reset();
+
   addFormValidator.toggleButtonState();
 }
 
@@ -116,9 +130,17 @@ const cardDeletePopup = new PopupWithConfirmation("#delete__card-modal");
 function handleDeleteClick(card) {
   cardDeletePopup.setSubmitAction(() => {
     cardDeletePopup.setLoading(true);
-    return api.deleteCard(card.id).then((res) => {
-      card.deleteCard();
-    });
+    return api
+      .deleteCard(card.id)
+      .then((res) => {
+        card.deleteCard();
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        cardDeletePopup.setLoading(false);
+      });
   });
   cardDeletePopup.open();
 }
@@ -173,10 +195,18 @@ avatarFormValidator.enableValidation();
  *********************/
 const avatarEditPopup = new PopupWithForm("#avatar__edit-modal", (formData) => {
   avatarEditPopup.setLoading(true);
-  api.setUserAvatar(formData.avatar).then((res) => {
-    userInfo.setAvatar(res.avatar);
-    avatarEditPopup.close();
-  });
+  api
+    .setUserAvatar(formData.avatar)
+    .then((res) => {
+      userInfo.setAvatar(res.avatar);
+      avatarEditPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      avatarEditPopup.setLoading(false);
+    });
 });
 
 avatarEditPopup.setEventListeners();
@@ -202,10 +232,15 @@ const userInfo = new UserInfo(
   ".profile__image"
 );
 
-api.getUserInfo().then((user) => {
-  userInfo.setUserInfo(user.name, user.about);
-  userInfo.setAvatar(user.avatar);
-});
+api
+  .getUserInfo()
+  .then((user) => {
+    userInfo.setUserInfo(user.name, user.about);
+    userInfo.setAvatar(user.avatar);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 // declare, but don't assign a value
 let cardSection;
