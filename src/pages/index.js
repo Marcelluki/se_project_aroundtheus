@@ -87,7 +87,7 @@ function handleProfileEditSubmit(formData) {
     .catch((err) => {
       console.error(err);
     })
-    .finally((res) => {
+    .finally(() => {
       profileEditPopup.setLoading(false);
     });
 }
