@@ -167,6 +167,7 @@ newCardPopup.setEventListeners();
 
 addNewCardButton.addEventListener("click", () => {
   newCardPopup.open();
+  addFormValidator.toggleButtonState();
 });
 
 /**********************
@@ -215,6 +216,7 @@ avatarEditPopup.setEventListeners();
  ******************************/
 profileAvatar.addEventListener("click", () => {
   avatarEditPopup.open();
+  avatarFormValidator.toggleButtonState();
 });
 
 /******************
