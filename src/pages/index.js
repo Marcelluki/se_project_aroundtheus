@@ -130,7 +130,6 @@ const editFormValidator = new FormValidator(
  * DELETE CARD POPUP *
  *********************/
 const cardDeletePopup = new PopupWithConfirmation("#delete__card-modal");
-// cardDeletePopup.setEventListeners();
 
 function handleDeleteClick(card) {
   cardDeletePopup.setSubmitAction(() => {
@@ -150,9 +149,6 @@ function handleDeleteClick(card) {
   cardDeletePopup.open();
 }
 
-// function handleConfirmFormSubmit() {
-//   //api.deleteCard(cardid).then.apply.
-// }
 /**********************
  * ADD FORM VALIDATOR *
  **********************/
@@ -249,9 +245,7 @@ api
     console.error(err);
   });
 
-// declare, but don't assign a value
 let cardSection;
-
 api
   .getInitialCards()
   .then((cards) => {
