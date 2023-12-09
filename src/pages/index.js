@@ -58,10 +58,15 @@ function createCard(cardData) {
             console.error(`${err}. Cannot dislike like button`);
           });
       } else {
-        return api.likeCard(card.id).then((res) => {
-          card.likeCard();
-          card.isLiked = !card.isLiked;
-        });
+        return api
+          .likeCard(card.id)
+          .then((res) => {
+            card.likeCard();
+            card.isLiked = !card.isLiked;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       }
     },
     handleDeleteClick
